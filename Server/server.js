@@ -3,6 +3,7 @@ import 'dotenv/config'
 import cors from 'cors'
 import ConnectDB from './Configs/db.js';
 import adminRouter from './Routes/adminRoutes.js';
+import blogRouter from './Routes/blogRoute.js';
 
 const app = express();
 
@@ -20,6 +21,8 @@ app.get('/',(req, res)=>{
 })
 
 app.use('/api/admin',adminRouter)
+app.use('/api/blog',blogRouter)
+
 
 const PORT = process.env.PORT || 3000;
 
