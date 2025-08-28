@@ -9,7 +9,7 @@ import Comments from "./Pages/Admin/Comments"
 import Login from "./Component/admin/Login"
 import 'quill/dist/quill.snow.css';
 import {Toaster} from "react-hot-toast"
-import { useAppContext } from "./context/appContext.jsx"
+import { useAppContext } from "./context/AppContext.jsx"
 function App() {
 
   const {token} = useAppContext()
