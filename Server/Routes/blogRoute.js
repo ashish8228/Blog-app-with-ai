@@ -14,12 +14,4 @@ blogRouter.post("/add-comments", addComment);
 blogRouter.get("/comments", getBlogComment);
 
 
-
-2
-
-
-
-
-
-
 export default blogRouter
