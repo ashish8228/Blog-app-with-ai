@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import Navbar from "../Component/Navbar"
-import { assets, blog_data, comments_data } from "../assets/assets"
+import { assets, blog_data, comments_data} from "../assets/assets"
 import moment from "moment"
 import Footer from "../Component/Footer"
 import Loader from "../Component/Loader"
 import { useAppContext } from "../context/appContext"
 import toast from "react-hot-toast"
+
 const Blog = () => {
 
   const { id } = useParams()
@@ -16,7 +17,7 @@ const Blog = () => {
   const [data, setdata] = useState(null)
   const [comments, setcomments] = useState([])
   const [name, setname] = useState("")
-  const [inputcomment, setinputcomment] = useState("")
+  const [content, setContent] = useState("")
 
   const fetchBlogData = async () => {
     try {
@@ -28,10 +29,10 @@ const Blog = () => {
   }
 
 
-  const fetchComment = async () => {
+  const fetchComments = async () => {
     try {
       const { data } = await axios.post('/api/blog/comments', { blogId: id })
-
+      console.log(id)
       if (data.success) {
         setcomments(data.comments)
       } else {
@@ -45,23 +46,24 @@ const Blog = () => {
   }
 
   const addComment = async (e) => {
-    e.preventdefault();
+    e.preventDefault()
+    
     try {
-      const { data } = await axios.post('/api/blog/add-comment', { blogId: id ,name, content });
+      const { data } = await axios.post('/api/blog/add-comments', { blog: id, name, content });
       if (data.success) {
         toast.success(data.message)
         setname('')
-        setcontent('')
+        setContent ('')
       } else {
-      toast.error(data.message)    
+        toast.error(data.message)
       }
     } catch (error) {
-      toast.error(error.message)
+      toast.error('try again after sometimes '+error.message)
     }
   }
   useEffect(() => {
     fetchBlogData()
-    fetchComment()
+    fetchComments()
   }, [])
   return data ? (
     <div className="relative">
@@ -104,10 +106,10 @@ const Blog = () => {
           <p className="font-semibold mb-4">Add your comment</p>
           <form onSubmit={addComment} className="flex flex-col items-start gap-4 max-w-lg">
             <input type="text" placeholder="Name" required className="w-full p-2 border border-gray-300 rounded outline-none" onChange={(e) => setname(e.target.value)} value={name} />
-
-            <textarea className="w-full p-2 border border-gray-300 rounded outline-none h-48" placeholder="comment" required onChange={(e) => setinputcomment(e.target.value)} value={inputcomment}></textarea>
-            {console.log(inputcomment)}
+            
+            <textarea className="w-full p-2 border border-gray-300 rounded outline-none h-48" placeholder="comment" required onChange={(e) => setContent(e.target.value)} value={content}></textarea>
             <button className="bg-primary text-white rounded p-2 px-8 hover:scale-102 transition-all cursor pointer" type="sumbit">Submit</button>
+            
           </form>
         </div>
 
