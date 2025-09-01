@@ -8,19 +8,18 @@ const Dashboard = () => {
 
   const [dashdata, setdashdata] = useState({
     blogs: 0,
-    comments: 0,
+    comment: 0,
     drafts: 0,
     recentBlogs: []
   })
 
-  const {axios} = useAppContext();
+  const { axios } = useAppContext();
   const fetchDashboard = async () => {
     try {
-      const {data} = await axios.get('/api/admin/dashboard')
-      console.log(data)
+      const { data } = await axios.get('/api/admin/dashboard')
       data.success ? setdashdata(data.dashboardData) : toast.error(data.message)
     } catch (error) {
-      toast.error(error.message)    
+      toast.error(error.message)
     }
   }
 
@@ -39,13 +38,15 @@ const Dashboard = () => {
 
         <div className='flex items-center gap-4 bg-white p-4 min-w-58 rounded shadow cursor-pointer hover:scale-105 transition-all'>
           <img src={assets.dashboard_icon_2} alt="" />
-          <p className='text-xl font-semibold text-gray-600'>{dashdata.comments}</p>
+          <p className='text-xl font-semibold text-gray-600'>
+            {dashdata.comment}</p>
           <p className='text-gray-400 font-light'>Comments</p>
         </div>
 
         <div className='flex items-center gap-4 bg-white p-4 min-w-58 rounded shadow cursor-pointer hover:scale-105 transition-all'>
           <img src={assets.dashboard_icon_3} alt="" />
-          <p className='text-xl font-semibold text-gray-600'>{dashdata.drafts}</p>
+          <p className='text-xl font-semibold text-gray-600'>
+            {dashdata.drafts}</p>
           <p className='text-gray-400 font-light'>Drafts</p>
         </div>
       </div>
@@ -68,7 +69,7 @@ const Dashboard = () => {
               </tr>
             </thead>
             <tbody>
-              {dashboard_data.recentBlogs.map((blog, index) => {
+              {dashdata.recentBlogs.map((blog, index) => {
                 return <BlogTableItem key={blog._id} blog={blog} fetchBlogs={fetchDashboard} index={index + 1} />
               })}
             </tbody>

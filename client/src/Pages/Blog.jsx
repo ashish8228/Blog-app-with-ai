@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import Navbar from "../Component/Navbar"
-import { assets, blog_data, comments_data} from "../assets/assets"
+import { assets, blog_data, comments_data } from "../assets/assets"
 import moment from "moment"
 import Footer from "../Component/Footer"
 import Loader from "../Component/Loader"
@@ -32,7 +32,6 @@ const Blog = () => {
   const fetchComments = async () => {
     try {
       const { data } = await axios.post('/api/blog/comments', { blogId: id })
-      console.log(id)
       if (data.success) {
         setcomments(data.comments)
       } else {
@@ -47,18 +46,18 @@ const Blog = () => {
 
   const addComment = async (e) => {
     e.preventDefault()
-    
+
     try {
       const { data } = await axios.post('/api/blog/add-comments', { blog: id, name, content });
       if (data.success) {
         toast.success(data.message)
         setname('')
-        setContent ('')
+        setContent('')
       } else {
         toast.error(data.message)
       }
     } catch (error) {
-      toast.error('try again after sometimes '+error.message)
+      toast.error('try again after sometimes ' + error.message)
     }
   }
   useEffect(() => {
@@ -74,7 +73,7 @@ const Blog = () => {
       <div className="text-center mt-20 text-gray-600">
         <p className="text-primary py-4 font-medium">Published on {moment(data.createdAt).format('LL')} </p>
         <h1 className="text-2xl sm:text-5xl font-semibold max-w-2xl mx-auto text-gray-800">{data.title}</h1>
-        <h2 className="my-5 max-w-lg truncate mx-auto">{data.subTitle}</h2>
+        <h2 className="my-5 max-w-lg truncate mx-auto">{data.subtitle}</h2>
         <p className="inline-block py-1 px-4 rounded-full mb-6 border text-sm border-primary/35 bg-primary/5 font-medium text-primary">Author name</p>
       </div>
 
@@ -85,7 +84,8 @@ const Blog = () => {
 
         {/* Comments */}
         <div className="mt-14 mb-10 max-w-3xl mx-auto">
-          <p className="mb-4 font-semibold">Comments {comments.length}</p>
+          <p className="mb-4 font-semibold">Comments ({comments.length})</p>
+
           <div className="flex flex-col gap-4">
             {comments.map((items, index) => (
               <div key={index} className="relative bg-primary/2 border border-primary/5 max-w-xl p-4 rounded text-gray-600">
@@ -106,10 +106,10 @@ const Blog = () => {
           <p className="font-semibold mb-4">Add your comment</p>
           <form onSubmit={addComment} className="flex flex-col items-start gap-4 max-w-lg">
             <input type="text" placeholder="Name" required className="w-full p-2 border border-gray-300 rounded outline-none" onChange={(e) => setname(e.target.value)} value={name} />
-            
+
             <textarea className="w-full p-2 border border-gray-300 rounded outline-none h-48" placeholder="comment" required onChange={(e) => setContent(e.target.value)} value={content}></textarea>
             <button className="bg-primary text-white rounded p-2 px-8 hover:scale-102 transition-all cursor pointer" type="sumbit">Submit</button>
-            
+
           </form>
         </div>
 

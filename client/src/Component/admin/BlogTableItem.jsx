@@ -11,9 +11,11 @@ const BlogTableItem = ({ blog, fetchBlogs, index }) => {
 
     const deleteBlog = async () => {
         const confirm = window.confirm("Are you sure you want to delete this blog?")
+        
         if (!confirm) return;
         try {
-            const { data } = await axios.post('/api/blog/delete', { id: blog._id })
+            const { data } = await axios.post('/api/blog/delete', { Id: blog._id })
+            console.log(blog._id)
             if (data.success) {
                 toast.success(data.message)
                 await fetchBlogs()
@@ -29,12 +31,12 @@ const BlogTableItem = ({ blog, fetchBlogs, index }) => {
 
     const togglePublish = async () => {
         try {
-            const { data } = await axios.post('/api/blog/toggle-publish', { id: blog._id })
+            const { data } = await axios.post('/api/blog/toggle-publish', { Id: blog._id })
             if (data.success) {
                 toast.success(data.message)
                 await fetchBlogs()
             } else {
-                toast.error("ashish"+data.message)
+                toast.error(data.message)
             }
         } catch (error) {
             toast.error(error.message)

@@ -3,16 +3,17 @@ import { assets } from '../../assets/assets'
 import { Outlet, useNavigate } from 'react-router-dom'
 import { IoExitOutline } from "react-icons/io5";
 import SideBar from '../../Component/admin/SideBar';
+import { useAppContext } from '../../context/appContext';
 
 
 const Layout = () => {
 
-  const Navigate = useNavigate();
-
+  const { axios, setToken, navigate } = useAppContext()
   const LogOutfn = () => {
     localStorage.removeItem('token');
-    Navigate('/');
-    window.location.reload();
+    axios.defaults.headers.common['Authorization'] = null;
+    setToken(null)
+    navigate('/');
   }
   return (
     <div>
