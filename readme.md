@@ -28,16 +28,15 @@ Use these credentials to access a demo account:
 
 ## 📦 Tech Stack
 
-| Area | Tech/Library | Icon |
-| :-- | :-- | :-- |
-| Frontend | React, Vite, Quill | ![React](https://skillicons.dev/icons?i=react) |
-| Styling | TailwindCSS | 
-| State/API | Axios, Marked, Moment | 
-| Server | Express, Node.js, JWT | 
-| DB/Storage | MongoDB, Mongoose | 
-| Media | ImageKit, Multer | 🖼️ |
-| Dev Tools | Vite, Nodemon, ESLint |  |
-
+| Area      | Tech/Library            | Icon                                                                                     |
+| :-------- | :----------------------| :---------------------------------------------------------------------------------------|
+| Frontend  | React, Vite, Quill      | ![React](https://skillicons.dev/icons?i=react) ![Vite](https://skillicons.dev/icons?i=vite) ![Quill](https://skillicons.dev/icons?i=quill) |
+| Styling   | TailwindCSS             | ![TailwindCSS](https://skillicons.dev/icons?i=tailwind)                                 |
+| State/API | Axios, Marked, Moment   | ![Axios](https://skillicons.dev/icons?i=axios) 📝 ![Moment](https://skillicons.dev/icons?i=moment)          |
+| Server    | Express, Node.js, JWT   | ![Express](https://skillicons.dev/icons?i=express) ![Node.js](https://skillicons.dev/icons?i=nodejs) 🔐    |
+| DB/Storage| MongoDB, Mongoose       | ![MongoDB](https://skillicons.dev/icons?i=mongodb)                                      |
+| Media     | ImageKit, Multer        | 🖼️                                                                                       |
+| Dev Tools | Vite, Nodemon, ESLint   | ![Vite](https://skillicons.dev/icons?i=vite) 🐺 ![ESLint](https://skillicons.dev/icons?i=eslint)           |
 
 ***
 
