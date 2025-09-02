@@ -2,6 +2,8 @@
 
 A modern AI-powered blog application built using Express, MongoDB, React, and Vite, with image hosting and robust authentication.
 
+🌐 Live Project
+
 ***
 
 ## 🧪 Demo Login
@@ -13,7 +15,7 @@ Use these credentials to access a demo account:
 
 ## 🚀 Features
 
-- **AI-Inspired Blogging**: Harness AI to assist with blog content generation and formatting.[^4][^5]
+- **AI-Inspired Blogging**: Harness AI to assist with blog content generation and formatting.
 - **Rich Text Editing**: Use Quill for a seamless editing experience.
 - **Image Uploads**: Managed via ImageKit \& Multer for fast, reliable hosting.
 - **Authentication**: Secure JWT-based user login/register system.
@@ -28,13 +30,13 @@ Use these credentials to access a demo account:
 
 | Area | Tech/Library | Icon |
 | :-- | :-- | :-- |
-| Frontend | React, Vite, Quill | [^1] |
-| Styling | TailwindCSS | [^1] |
-| State/API | Axios, Marked, Moment | [^1] |
-| Server | Express, Node.js, JWT | [^1] |
-| DB/Storage | MongoDB, Mongoose | [^1] |
+| Frontend | React, Vite, Quill | ![React](https://skillicons.dev/icons?i=react) |
+| Styling | TailwindCSS | 
+| State/API | Axios, Marked, Moment | 
+| Server | Express, Node.js, JWT | 
+| DB/Storage | MongoDB, Mongoose | 
 | Media | ImageKit, Multer | 🖼️ |
-| Dev Tools | Vite, Nodemon, ESLint | [^1] |
+| Dev Tools | Vite, Nodemon, ESLint |  |
 
 
 ***
