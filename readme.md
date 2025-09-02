@@ -2,7 +2,7 @@
 
 A modern AI-powered blog application built using Express, MongoDB, React, and Vite, with image hosting and robust authentication.
 
-🌐 Live Project
+🌐 Live Project (https://blog-with-ai-two.vercel.app/)
 
 ***
 
