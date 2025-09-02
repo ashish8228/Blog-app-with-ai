@@ -18,7 +18,7 @@ const Layout = () => {
   return (
     <div>
       <div className='flex items-center justify-between py-2 h-[70px] px-4 sm:px-12 border-b border-gray-200'>
-        <img src={assets.logo} alt="" className='w-32 sm:w-auto cursor-pointer' onClick={() => Navigate("/")} />
+        <img src={assets.logo} alt="" className='w-32 sm:w-auto cursor-pointer' onClick={() => navigate("/")} />
 
         <button onClick={LogOutfn} className='flex items-center gap-2 text-sm px-8 py-2 bg-primary text-white rounded-full cursor-pointer'>Logout <IoExitOutline size={18} /></button>
       </div>

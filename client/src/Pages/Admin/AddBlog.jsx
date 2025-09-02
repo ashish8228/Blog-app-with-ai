@@ -3,7 +3,8 @@ import { assets, blogCategories } from "../../assets/assets"
 import Quill from 'quill';
 import { useAppContext } from '../../context/appContext';
 import toast from 'react-hot-toast';
-import {parse} from 'marked';
+import { parse } from 'marked';
+import { FaSkullCrossbones } from "react-icons/fa";
 
 const AddBlog = () => {
 
@@ -27,16 +28,16 @@ const AddBlog = () => {
     try {
       setLoading(true)
       const { data } = await axios.post('/api/blog/generate', { prompt: title })
-      if(data.success){
+      if (data.success) {
         quillRef.current.root.innerHTML = parse(data.content)
       }
-      else{
+      else {
         toast.error(data.message)
       }
     } catch (error) {
       toast.error(error.message)
     }
-    finally{
+    finally {
       setLoading(false)
     }
 
@@ -102,8 +103,12 @@ const AddBlog = () => {
 
         <p className='mt-4'>Blog Description</p>
         <div className='max-w-lg h-74 pb-16 sm:pb-10 pt-2 relative'>
-          <div ref={editorRef} ></div>
-          <button disabled={loading} type='button' onClick={generateContent} className='absolute bottom-1 right-2 ml-2 text-xs text-white bg-black/70 px-4 py-1.5 rounded hover:underline cursor-pointer'>{loading?"generating.." : "Generate with AI"}</button>
+          <div ref={editorRef}></div>
+          {loading && (
+            <div className='absolute right-0 top-0 bottom-0 left-0 flex mb-0 items-center justify-center bg-black/90 mt-2'>
+              <div className='w-8 h-8 rounded-full animate-spin flex items-center justify-center'><FaSkullCrossbones size={30} className='text-gray-300'/></div>
+            </div>)}
+          <button disabled={loading} type='button' onClick={generateContent} className='absolute bottom-1 right-2 ml-2 text-xs text-white bg-black/70 px-4 py-1.5 rounded hover:underline cursor-pointer'>{loading ? "generating..." : "Generate with AI"}</button>
         </div>
 
         <p className='mt-4'>Blog Category</p>

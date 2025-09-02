@@ -28,22 +28,18 @@ const Blog = () => {
     }
   }
 
-
-  const fetchComments = async () => {
-    try {
-      const { data } = await axios.post('/api/blog/comments', { blogId: id })
-      if (data.success) {
-        setcomments(data.comments)
-      } else {
-        toast.error(data.message)
-
-      }
-    } catch (error) {
-      toast.error(error.message)
-
+const fetchComments = async () => {
+  try {
+    const { data } = await axios.get('/api/blog/comments', {blogId: id});
+    if (data.success) {
+      setcomments(data.comments);
+    } else {
+      toast.error(data.message);
     }
+  } catch (error) {
+    toast.error(error.message);
   }
-
+};
   const addComment = async (e) => {
     e.preventDefault()
 
